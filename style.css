@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif
+}
+nav{
+    display: flex;
+    justify-content: center;
+    color: mediumseagreen;
+    padding: 16px;
+    box-shadow: 0 0 5px 0 rgb(221, 221, 221); 
+}
+aside{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background: rgb(247,247,247);
+    height: 100%;
+    z-index: 5;
+}
+aside>a{
+    padding: 20px;
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    transition: all 0.3s;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd; 
+}
+.active{
+    background: dodgerblue;
+    color: white;
+}
+button{
+    margin: 16px 8px;
+}
+.chatbox{
+    position: absolute;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 40px 40px 12px 350px ;
+}
+.chatinput{
+    width:100%;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    padding: 12px 24px;
+    border-radius: 8px;
+}
+.sendarea{
+    width: 100%;
+}
+.msg{
+    padding: 12px 24px;
+    margin: 12px 0;
+    background: mediumseagreen;
+    color: white;
+    border-radius: 8px;
+    width: max-content;
+    max-width: 80%;
+}
+.msg>p{
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+.other{
+    background: dodgerblue;
+    align-self: flex-end;
+}
+.chatbody{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.sendarea>p{
+    margin: 16px;
+    background: crimson;
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+}

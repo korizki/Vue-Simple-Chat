@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" >
+    <title>Vue Chat</title>
+</head>
+<body>
+    <div id="app">
+        <nav>
+            <h2>Vue Chat</h2>
+        </nav>
+        <aside>
+            <a :class="{active : activeChat == 'Rizki'}" @click="activeChat = 'Rizki'" >Rizki Ramadhan</a>
+            <a :class="{active : activeChat == 'Naira'}" @click="activeChat = 'Naira'">Nashwa Alnaira</a>
+        </aside>
+        <div class="chatbox">
+            <div class="chatbody">
+                <div class="msg" v-for="msg in listMessage" :key="msg.id" :class="{other : msg.from != activeChat}">
+                    <p>{{msg.time}}</p>
+                    <h4>{{msg.message}}</h4>
+                </div>
+            </div>
+            <div class="sendarea">
+                <p>Send Message as {{activeChat}}</p>
+                <input type="text" class="chatinput" @keyup="handleEnter" v-model="message" placeholder="Type message here...">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          message: 'Hello Vue!',
+          activeChat: 'Rizki',
+          message: '',
+          id: 0,
+          listMessage: [
+
+          ]
+        }
+      },
+      methods: {
+        handleEnter(e){
+            if(e.key == 'Enter'){
+                let obj = {
+                    time: (new Date()).toLocaleTimeString(),
+                    from: this.activeChat,
+                    id: this.id++,
+                    message: this.message
+                }
+                this.listMessage.push(obj)
+                this.message = '';
+            }
+        }
+      }
+    }).mount('#app')
+  </script>
+</html>
