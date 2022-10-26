@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" >
+    <title>Vue Task List</title>
+</head>
+<style>
+    .item{
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        margin: 8px 10%;
+        width: 80%;
+    }
+    .item>p{
+        display: flex;
+        justify-content: space-between;
+    }
+    .badge{
+        font-size: 0.8rem;
+        background: rgb(241, 248, 255);
+        color: dodgerblue;
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+    button{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 16px;
+        border-radius: 4px;
+        color: white;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 0  10px 0 purple;
+        background: purple;
+    }
+</style>
+<body>
+    <div id="app">
+        <div class="item" v-for="task in listTask" :key="task.id">
+            <p><span><span v-if="task.isDone">✅ -</span><span v-else>⭕️ -</span> {{task.detail}}</span><span class="badge" v-if="task.isDone">{{task.status}}</span></p>
+        </div>
+        <button @click="checkTask">+</button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          listTask: [
+            {
+                id: 1,
+                detail: 'Membuat desain UI Aplikasi Web',
+                isDone: true,
+                status: 'Completed'
+            },
+            {
+                id: 2,
+                detail: 'Melakukan UX Research terkait kebutuhan user',
+                isDone: false,
+                status: 'On Progress'
+            },
+            {
+                id: 3,
+                detail: 'Koordinasi dengan Front End Dev implementasi desain ke code',
+                isDone: false,
+                status: 'Waiting Programmer'
+            },
+            {
+                id: 4,
+                detail: 'Testing Aplikasi pada Local Environtment',
+                isDone: false,
+                status: 'Testing Progress'
+            },
+            {
+                id: 5,
+                detail: 'Demo Aplikasi Web kepada Client',
+                isDone: false,
+                status: 'Waiting Schedule'
+            },
+          ]
+        }
+      },
+      methods: {
+        checkTask(){
+            let filtered = this.listTask.filter(item => item.isDone == false)
+            filtered[0].isDone = true
+        }
+      }
+    }).mount('#app')
+  </script>
+</html>
