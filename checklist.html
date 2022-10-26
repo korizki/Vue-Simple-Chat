@@ -31,7 +31,7 @@
         bottom: 20px;
         right: 20px;
         padding: 10px 16px;
-        border-radius: 4px;
+        border-radius: 50px;
         color: white;
         font-size: 1.2rem;
         border: none;
@@ -43,7 +43,7 @@
 <body>
     <div id="app">
         <div class="item" v-for="task in listTask" :key="task.id">
-            <p><span><span v-if="task.isDone">✅ -</span><span v-else>⭕️ -</span> {{task.detail}}</span><span class="badge" v-if="task.isDone">{{task.status}}</span></p>
+            <p><span><span v-if="task.isDone">✅ </span><span v-else>⭕️ </span> {{task.detail}}</span><span class="badge" v-if="task.isDone">{{task.status}}</span></p>
         </div>
         <button @click="checkTask">+</button>
     </div>
